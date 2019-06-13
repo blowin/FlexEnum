@@ -1,0 +1,6 @@
+.gitignore
+.idea/
+FlexEnum.Tests/bin/
+FlexEnum.Tests/obj/
+FlexEnum/bin/
+FlexEnum/obj/
