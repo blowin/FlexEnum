@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlexEnum", "FlexEnum\FlexEnum.csproj", "{3FF1B2E7-976E-4C6C-9A32-E6A2664FEA6A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlexEnum.Tests", "FlexEnum.Tests\FlexEnum.Tests.csproj", "{CD9806C1-646F-43C1-96D8-8BB16EDF1B5D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3FF1B2E7-976E-4C6C-9A32-E6A2664FEA6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FF1B2E7-976E-4C6C-9A32-E6A2664FEA6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FF1B2E7-976E-4C6C-9A32-E6A2664FEA6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FF1B2E7-976E-4C6C-9A32-E6A2664FEA6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD9806C1-646F-43C1-96D8-8BB16EDF1B5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD9806C1-646F-43C1-96D8-8BB16EDF1B5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD9806C1-646F-43C1-96D8-8BB16EDF1B5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD9806C1-646F-43C1-96D8-8BB16EDF1B5D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
