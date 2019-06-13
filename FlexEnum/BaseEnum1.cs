@@ -28,7 +28,9 @@ namespace FlexEnum
     protected bool Equals(BaseEnum<T> other)
       => Equals((object)other);
 
+#pragma warning disable 659
     public override bool Equals(object obj)
+#pragma warning restore 659
     {
       return !ReferenceEquals(null, obj) && ReferenceEquals(this, obj);
     }

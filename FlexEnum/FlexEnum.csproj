@@ -3,6 +3,10 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
         <Title>FlexEnum</Title>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageProjectUrl>https://github.com/blowin/FlexEnum</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/blowin/FlexEnum</RepositoryUrl>
+        <PackageTags>enum</PackageTags>
     </PropertyGroup>
 
 </Project>
