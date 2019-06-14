@@ -9,7 +9,7 @@ namespace FlexEnum.Util
     where TEnum : BaseEnum0
   {
     private static readonly TEnum[] _fields;
-    private static readonly SortedList<string, TEnum> _parseValues;
+    private static readonly SortedList<int, TEnum> _parseValues;
 
     public static ReadonlyArray<TEnum> Fields => _fields;
     
@@ -19,7 +19,7 @@ namespace FlexEnum.Util
 
       var staticFields = type.GetFields(BindingFlags.Public | BindingFlags.Static);
       
-      _parseValues = new SortedList<string, TEnum>(staticFields.Length);
+      _parseValues = new SortedList<int, TEnum>(staticFields.Length);
       if (staticFields.Length == 0)
       {
         _fields = Array.Empty<TEnum>();
@@ -31,7 +31,7 @@ namespace FlexEnum.Util
         {
           var item = (TEnum)staticFields[index].GetValue(null);
           _fields[index] = item;
-          _parseValues.Add(item.ToString(), item);
+          _parseValues.Add(item.ToString().GetHashCode(), item);
         }
         
         Array.Sort(_fields);
@@ -40,7 +40,7 @@ namespace FlexEnum.Util
     
     public static bool TryParse(string value, out TEnum val)
     {
-      return _parseValues.TryGetValue(value, out val);
+      return _parseValues.TryGetValue((value ?? string.Empty).GetHashCode(), out val);
     }
   }
 }
