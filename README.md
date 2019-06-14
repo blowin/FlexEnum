@@ -1,7 +1,7 @@
 # FlexEnum
 
 #### BaseEnum
-```
+```c#
 public sealed class Month : BaseEnum<string>
 {
   public static readonly Month September = new Month("Sept");
@@ -22,7 +22,7 @@ Assert.Equal("Sept", Month.September);
 ```
 
 #### BaseFlagEnum
-```
+```c#
 public sealed class Brace : BaseFlagEnum<string>
 {
   public static readonly Brace Start = new Brace(1, "{");
@@ -43,4 +43,29 @@ Assert.Equal("[1, {]", Brace.Start);
 Assert.True(((Brace.Start | Brace.End) & Brace.End) == Brace.End);
 Assert.True(Brace.StartEnd.HasFlag(Brace.End));
 Assert.False(Brace.StartEnd.HasFlag(Brace.None));
+```
+
+#### FlexEnum
+
+##### IsDefune
+```c#
+Assert.Equal(false, Util.FlexEnum.IsDefined<Brace>(null));
+Assert.Equal(true, Util.FlexEnum.IsDefined<Brace>(Brace.Start));
+
+var ctor = typeof(Month).GetConstructor(BindingFlags.Instance | BindingFlags.NonPublic, null, new []{typeof(string)}, null);
+var anotherObj = (Month)ctor.Invoke(new []{"NOT ENUM VALUE"});
+Assert.Equal(false, Util.FlexEnum.IsDefined<Brace>(anotherObj));
+```
+
+##### TryParseTest
+```c#
+Brace parseVal;
+Assert.Equal(false, Util.FlexEnum.TryParse("NOTCONTAIN", out parseVal));
+Assert.Equal(true, Util.FlexEnum.TryParse("[1, {]", out parseVal));
+```
+
+##### ParseTest
+```c#
+Assert.Equal(null, Util.FlexEnum.Parse<Brace>("NOTCONTAIN"));
+Assert.Equal(Brace.Start, Util.FlexEnum.Parse<Brace>("[1, {]"));
 ```
