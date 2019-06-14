@@ -1,10 +1,11 @@
 using System;
+using System.Collections.Generic;
 
 namespace FlexEnum
 {
-#pragma warning disable 660,661
-  public abstract class BaseEnum<T>
-#pragma warning restore 660,661
+#pragma warning disable 660,661, 659
+  public abstract class BaseEnum<T> : BaseEnum0
+#pragma warning restore 660,661, 659
   {
     public T Value { get; }
 
@@ -33,6 +34,11 @@ namespace FlexEnum
 #pragma warning restore 659
     {
       return !ReferenceEquals(null, obj) && ReferenceEquals(this, obj);
+    }
+
+    public override int CompareTo(BaseEnum0 other)
+    {
+      return Comparer<T>.Default.Compare(Value, ((BaseEnum<T>) other).Value);
     }
 
     public override string ToString()
