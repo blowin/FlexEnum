@@ -69,3 +69,66 @@ Assert.Equal(true, Util.FlexEnum.TryParse("[1, {]", out parseVal));
 Assert.Equal(null, Util.FlexEnum.Parse<Brace>("NOTCONTAIN"));
 Assert.Equal(Brace.Start, Util.FlexEnum.Parse<Brace>("[1, {]"));
 ```
+#### Flag auto generate value
+```c#
+public sealed class StepGenerator1 : BaseFlagEnum<string>
+{
+  public static StepGenerator1 Step1;
+  public static StepGenerator1 Step2;
+  public static StepGenerator1 Step3;
+
+  static StepGenerator1()
+  {
+    StartValue = 5;
+
+    Step1 = new StepGenerator1(string.Empty);
+    Step2 = new StepGenerator1(string.Empty);
+    Step3 = new StepGenerator1(string.Empty);
+  }
+
+  private StepGenerator1(string val2) : base(val2)
+  {
+  }
+}
+
+Assert.Equal(5, StepGenerator1.Step1.Value);
+Assert.Equal(6, StepGenerator1.Step2.Value);
+Assert.Equal(7, StepGenerator1.Step3.Value);
+```
+
+#### Flag value generator value
+```c#
+public sealed class StepGenerator2 : BaseFlagEnum<string>
+{
+  public static StepGenerator2 Step1;
+  public static StepGenerator2 Step2;
+  public static StepGenerator2 Step3;
+
+  static StepGenerator2()
+  {
+    StartValue = 0;
+    var gen = new Generator();
+    Step1 = new StepGenerator2(string.Empty, gen);
+    Step2 = new StepGenerator2(string.Empty, gen);
+    Step3 = new StepGenerator2(string.Empty, gen);
+  }
+
+  private StepGenerator2(string val2, IEnumStepGenerator enumStepGenerator) 
+    : base(val2, enumStepGenerator)
+  {
+  }
+
+  private sealed class Generator : IEnumStepGenerator
+  {
+    public int NextStep(int curVal)
+    {
+      return 1 << curVal;
+    }
+  }
+}
+}
+
+Assert.Equal(1, StepGenerator2.Step1.Value);
+Assert.Equal(2, StepGenerator2.Step2.Value);
+Assert.Equal(4, StepGenerator2.Step3.Value);
+```
