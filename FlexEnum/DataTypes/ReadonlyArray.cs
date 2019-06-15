@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
 namespace FlexEnum.DataTypes
 {
@@ -8,16 +9,21 @@ namespace FlexEnum.DataTypes
   {
     private readonly T[] _arr;
 
-    public int Length => (_arr?.Length) ?? 0;
+    public int Length
+    {
+      [MethodImpl(MethodImplOptions.AggressiveInlining)]
+      get
+      {
+        return _arr.Length;
+      }
+    }
 
     public T this[int idx]
     {
+      [MethodImpl(MethodImplOptions.AggressiveInlining)]
       get
       {
-        if (_arr != null)
-          return _arr[idx];
-        
-        throw new ArgumentNullException("Not found array");
+        return _arr[idx];
       }
     }
 

@@ -8,7 +8,7 @@
         <PackageTags>enum</PackageTags>
         <RepositoryType>git</RepositoryType>
         <TargetFrameworks>net471;net472;net48;netstandard2.0;netcoreapp3.0</TargetFrameworks>
-        <PackageVersion>1.0.1</PackageVersion>
+        <PackageVersion>2.0.0</PackageVersion>
     </PropertyGroup>
 
 </Project>

@@ -56,8 +56,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseEnum1Test.cs" />
-    <Compile Include="BaseFlagEnumTest.cs" />
+    <Compile Include="BaseEnumTests\BaseEnum1Test.cs" />
+    <Compile Include="BaseEnumTests\BaseEnum1Test.EqClass.cs" />
+    <Compile Include="BaseEnumTests\BaseEnum1Test.IsDefineClass.cs" />
+    <Compile Include="BaseEnumTests\BaseEnum1Test.NotEqClass.cs" />
+    <Compile Include="BaseEnumTests\BaseEnum1Test.ParseClass.cs" />
+    <Compile Include="BaseEnumTests\BaseEnum1Test.ToStringClass.cs" />
+    <Compile Include="BaseEnumTests\BaseEnum1Test.TryParseClass.cs" />
+    <Compile Include="BaseFlagTests\BaseFlagEnumTest.cs" />
+    <Compile Include="BaseFlagTests\BaseFlagEnumTest.EqClass.cs" />
+    <Compile Include="BaseFlagTests\BaseFlagEnumTest.HasFlagClass.cs" />
+    <Compile Include="BaseFlagTests\BaseFlagEnumTest.NotEqClass.cs" />
+    <Compile Include="BaseFlagTests\BaseFlagEnumTest.StepGenerator1.cs" />
+    <Compile Include="BaseFlagTests\BaseFlagEnumTest.StepGenerator1Class.cs" />
+    <Compile Include="BaseFlagTests\BaseFlagEnumTest.StepGenerator2.cs" />
+    <Compile Include="BaseFlagTests\BaseFlagEnumTest.StepGenerator2Class.cs" />
+    <Compile Include="BaseFlagTests\BaseFlagEnumTest.ToStringClass.cs" />
     <Compile Include="BaseTestClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

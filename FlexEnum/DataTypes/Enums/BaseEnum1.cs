@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace FlexEnum
+namespace FlexEnum.DataTypes.Enums
 {
 #pragma warning disable 660,661, 659
   public abstract class BaseEnum<T> : BaseEnum0

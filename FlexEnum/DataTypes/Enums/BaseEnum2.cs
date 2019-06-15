@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace FlexEnum
+namespace FlexEnum.DataTypes.Enums
 {
   public abstract class BaseEnum<T, T2> : BaseEnum<T>
   {

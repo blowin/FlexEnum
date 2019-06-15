@@ -1,5 +1,6 @@
 using System;
 using FlexEnum.DataTypes;
+using FlexEnum.DataTypes.Enums;
 
 namespace FlexEnum.Util
 {

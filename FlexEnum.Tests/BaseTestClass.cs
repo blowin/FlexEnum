@@ -12,7 +12,7 @@ namespace FlexEnum.Tests
       return GetEnumerator();
     }
 
-    protected object[] Param(params object[] param)
+    protected static object[] Param(params object[] param)
     {
       return param;
     }

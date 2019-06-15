@@ -1,8 +1,16 @@
-namespace FlexEnum
+using FlexEnum.Interfaces;
+
+namespace FlexEnum.DataTypes.Enums
 {
   public abstract class BaseFlagEnum<TVal> : BaseEnum<int, TVal>
   {
-    protected BaseFlagEnum(int id, TVal val2) : base(id, val2)
+    protected static int StartValue;
+    
+    protected BaseFlagEnum(TVal val2, IEnumStepGenerator generator = null) : this(StartValue++, val2, generator)
+    {
+    }
+    
+    protected BaseFlagEnum(int id, TVal val2, IEnumStepGenerator generator = null) : base(generator?.NextStep(id) ?? id, val2)
     {
     }
 
@@ -32,7 +40,11 @@ namespace FlexEnum
 
     public bool HasFlag(BaseFlagEnum<TVal> val)
     {
-      return (this & val) == (int)val;
+      if (val == null)
+        return false;
+      
+      var value = val.Value;
+      return (this & value) == value;
     }
   }
 }

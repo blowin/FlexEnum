@@ -1,6 +1,6 @@
 using System;
 
-namespace FlexEnum
+namespace FlexEnum.DataTypes.Enums
 {
   public abstract class BaseEnum0 : IComparable<BaseEnum0>
   {

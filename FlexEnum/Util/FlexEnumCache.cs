@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using FlexEnum.DataTypes;
+using FlexEnum.DataTypes.Enums;
 
 namespace FlexEnum.Util
 {
