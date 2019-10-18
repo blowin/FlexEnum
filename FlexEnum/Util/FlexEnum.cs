@@ -35,9 +35,7 @@ namespace FlexEnum.Util
     public static TEnum Parse<TEnum>(string value)
       where TEnum : BaseEnum0
     {
-      if(!FlexEnumCache<TEnum>.TryParse(value, out var val))
-        throw new InvalidOperationException($"Can not convert {value} to {typeof(TEnum).Name}");
-
+      FlexEnumCache<TEnum>.TryParse(value, out var val);
       return val;
     }
   }
