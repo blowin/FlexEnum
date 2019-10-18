@@ -1,14 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <Title>FlexEnum</Title>
+        <Title>Blowin.FlexEnum</Title>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageProjectUrl>https://github.com/blowin/FlexEnum</PackageProjectUrl>
         <RepositoryUrl>https://github.com/blowin/FlexEnum</RepositoryUrl>
         <PackageTags>enum</PackageTags>
         <RepositoryType>git</RepositoryType>
-        <TargetFrameworks>net471;net472;net48;netstandard2.0;netcoreapp3.0</TargetFrameworks>
+        <TargetFrameworks>netstandard2.0</TargetFrameworks>
         <PackageVersion>2.0.0</PackageVersion>
+        <AssemblyName>Blowin.FlexEnum</AssemblyName>
+        <Version>1.1.0</Version>
+        <RootNamespace>FlexEnum</RootNamespace>
     </PropertyGroup>
 
 </Project>

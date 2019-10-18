@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using FlexEnum.DataTypes;
 using FlexEnum.DataTypes.Enums;
 
@@ -9,13 +10,16 @@ namespace FlexEnum.Util
   internal static class FlexEnumCache<TEnum>
     where TEnum : BaseEnum0
   {
-    private static readonly TEnum[] _fields;
-    private static readonly SortedList<int, TEnum> _parseValues;
+    private static TEnum[] _fields;
+    private static SortedList<int, TEnum> _parseValues;
 
     public static ReadonlyArray<TEnum> Fields => _fields;
-    
-    static FlexEnumCache()
+
+    private static void EnsureCreate()
     {
+      if(_parseValues != null)
+        return;
+
       var type = typeof(TEnum);
 
       var staticFields = type.GetFields(BindingFlags.Public | BindingFlags.Static);
@@ -38,9 +42,11 @@ namespace FlexEnum.Util
         Array.Sort(_fields);
       }
     }
-    
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static bool TryParse(string value, out TEnum val)
     {
+      EnsureCreate();
       return _parseValues.TryGetValue((value ?? string.Empty).GetHashCode(), out val);
     }
   }

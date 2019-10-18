@@ -76,7 +76,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FlexEnum\FlexEnum.csproj">
+    <ProjectReference Include="..\FlexEnum\Blowin.FlexEnum.csproj">
       <Project>{3ff1b2e7-976e-4c6c-9a32-e6a2664fea6a}</Project>
       <Name>FlexEnum</Name>
     </ProjectReference>

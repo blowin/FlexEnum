@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 using FlexEnum.DataTypes;
 using FlexEnum.DataTypes.Enums;
 
@@ -9,6 +10,7 @@ namespace FlexEnum.Util
     public static ReadonlyArray<TEnum> GetFields<TEnum>()
       where TEnum : BaseEnum0 => FlexEnumCache<TEnum>.Fields;
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static bool IsDefined<TEnum>(object hasVal) 
       where TEnum : BaseEnum0
     {
@@ -23,6 +25,7 @@ namespace FlexEnum.Util
       return fields.BinarySearch((TEnum)hasVal) >= 0;
     }
     
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static bool TryParse<TEnum>(string value, out TEnum val)
       where TEnum : BaseEnum0
     {
@@ -32,8 +35,9 @@ namespace FlexEnum.Util
     public static TEnum Parse<TEnum>(string value)
       where TEnum : BaseEnum0
     {
-      TEnum val;
-      FlexEnumCache<TEnum>.TryParse(value, out val);
+      if(!FlexEnumCache<TEnum>.TryParse(value, out var val))
+        throw new InvalidOperationException($"Can not convert {value} to {typeof(TEnum).Name}");
+
       return val;
     }
   }

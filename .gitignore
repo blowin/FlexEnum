@@ -4,3 +4,6 @@ FlexEnum.Tests/bin/
 FlexEnum.Tests/obj/
 FlexEnum/bin/
 FlexEnum/obj/
+/packages/System.ValueTuple.4.5.0
+/.vs/FlexEnum/DesignTimeBuild
+/.vs
