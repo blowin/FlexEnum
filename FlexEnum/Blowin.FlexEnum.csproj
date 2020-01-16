@@ -8,7 +8,7 @@
         <PackageTags>enum</PackageTags>
         <RepositoryType>git</RepositoryType>
         <TargetFrameworks>netstandard2.0</TargetFrameworks>
-        <PackageVersion>2.0.0</PackageVersion>
+        <PackageVersion>2.1.0</PackageVersion>
         <AssemblyName>Blowin.FlexEnum</AssemblyName>
         <Version>1.1.0</Version>
         <RootNamespace>FlexEnum</RootNamespace>

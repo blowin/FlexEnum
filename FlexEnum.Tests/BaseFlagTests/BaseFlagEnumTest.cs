@@ -1,4 +1,5 @@
-﻿using FlexEnum.DataTypes.Enums;
+﻿using System.Linq;
+using FlexEnum.DataTypes.Enums;
 using Xunit;
 
 namespace FlexEnum.Tests.BaseFlagTests
@@ -79,6 +80,29 @@ namespace FlexEnum.Tests.BaseFlagTests
     public void StepGenerator2Test(int value, StepGenerator2 generator)
     {
       Assert.Equal(value, generator.Value);
+    }
+
+    [Fact]
+    public void ValuesNotNullTest()
+    {
+      Assert.NotNull(BaseEnum0.GetFields<Brace>());
+    }
+
+    [Fact]
+    public void ValuesCountTest()
+    {
+      Assert.Equal(BaseEnum0.GetFields<Brace>().Length, 4);
+    }
+
+    [Fact]
+    public void ValuesContentTest()
+    {
+      var values = BaseEnum0.GetFields<Brace>();
+      
+      Assert.True(values.Contains(Brace.End));
+      Assert.True(values.Contains(Brace.Start));
+      Assert.True(values.Contains(Brace.StartEnd));
+      Assert.True(values.Contains(Brace.None));
     }
   }
 }

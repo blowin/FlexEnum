@@ -10,10 +10,18 @@ namespace FlexEnum.Util
   internal static class FlexEnumCache<TEnum>
     where TEnum : BaseEnum0
   {
-    private static TEnum[] _fields;
+    private static ReadonlyArray<TEnum> _fields;
     private static SortedList<int, TEnum> _parseValues;
 
-    public static ReadonlyArray<TEnum> Fields => _fields;
+    public static ReadonlyArray<TEnum> Fields
+    {
+      [MethodImpl(MethodImplOptions.AggressiveInlining)]
+      get
+      {
+        EnsureCreate();
+        return _fields;
+      }
+    }
 
     private static void EnsureCreate()
     {
@@ -31,15 +39,28 @@ namespace FlexEnum.Util
       }
       else
       {
-        _fields = new TEnum[staticFields.Length];
+        var fields = new TEnum[staticFields.Length];
+        int idx = 0;
         for (var index = 0; index < staticFields.Length; index++)
         {
-          var item = (TEnum)staticFields[index].GetValue(null);
-          _fields[index] = item;
-          _parseValues.Add(item.ToString().GetHashCode(), item);
+          var notCastItem = staticFields[index].GetValue(null);
+          if (notCastItem is TEnum)
+          {
+            var item = (TEnum)notCastItem;
+            fields[idx] = item;
+            _parseValues.Add(item.ToString().GetHashCode(), item);
+
+            idx += 1;
+          }
+
+          if (staticFields.Length != idx)
+          {
+            Array.Resize(ref fields, idx + 1);
+          }
         }
         
-        Array.Sort(_fields);
+        Array.Sort(fields);
+        _fields = fields;
       }
     }
 
